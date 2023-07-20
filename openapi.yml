@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: Flincap API
+  version: 1.0.0
+servers:
+  - url: http://flincap.app
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /v1/get-rate:
+    get:
+      tags:
+        - default
+      summary: Get Rate
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: selectedCrypt
+          in: query
+          schema:
+            type: string
+          example: USDT
+        - name: selectedFiat
+          in: query
+          schema:
+            type: string
+          example: NGN
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/get-exchange:
+    get:
+      tags:
+        - default
+      summary: Get Exchange
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/create-transaction:
+    post:
+      tags:
+        - default
+      summary: Record Transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                selectedCrypt: USDT
+                selectedFiat: NGN
+                email: string
+                bankName: string
+                bankCode: string
+                accNum: string
+                accName: string
+                amountFiat: string
+                amountCrypt: string
+                rate: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/get-transactions/{transaction_id}:
+    get:
+      tags:
+        - default
+      summary: Get Transaction
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: transaction_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v1/get-transactions:
+    get:
+      tags:
+        - default
+      summary: Get History
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: transactionType
+          in: query
+          schema:
+            type: string
+          example: DEPOSIT
+        - name: selectedFiat
+          in: query
+          schema:
+            type: string
+          example: CRYPTO
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,0 +1,17 @@
+name: flincap_sdk
+description: The Flincap library provides access to the Flincap API in Dart/Flutter applications.
+version: 0.0.1
+repository: https://github.com/Flincap/flincap-dart-sdk
+
+environment:
+  sdk: ^3.0.5
+
+# Add regular dependencies here.
+dependencies:
+  http: ^0.13.3
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+  dotenv: ^4.1.0
